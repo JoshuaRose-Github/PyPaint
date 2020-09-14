@@ -11,7 +11,7 @@ I made this in math class and it kind of took off from there. Now it's more of a
 - The preferred method of execution is through a text editor 
 - This program also however, can be run through a command line but it is not as consistant and could have bugs. Again, if there are any bugs present, feel free to document them in the issues tab and tag it with 'bug' and I will try and get to it when I can. 
 
-#### Libraries
+### Libraries
 - Math
 - PyGame
 
