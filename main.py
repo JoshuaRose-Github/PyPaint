@@ -3,10 +3,8 @@
 import pygame
 import math
 
-from pygame import gfxdraw
-
 # WINDOW = pygame.display.set_mode((1920, 1080), pygame.RESIZABLE) # STILL IN TESTING
-WINDOW = pygame.display.set_mode((500,450))
+WINDOW = pygame.display.set_mode((500, 450))
 
 
 running = 1
@@ -30,7 +28,7 @@ X_HOVER_IMAGE = pygame.transform.scale(X_HOVER_IMAGE, (40, 40))
 
 paint = True
 
-pygame.display.set_caption("PyPaint Alpha Version 1.0")
+pygame.display.set_caption("PyPaint  v1.0")
 
 while running:
 
@@ -72,6 +70,9 @@ while running:
             if event.key == pygame.K_EQUALS:
                 paint_mode += 2
                 print(paint_mode)
+
+            elif event.key == pygame.K_ESCAPE:
+                pygame.quit()
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if pygame.mouse.get_pos()[0] in range(7, 29) and pygame.mouse.get_pos()[1] in range(400, 436):
