@@ -6,6 +6,8 @@ import math
 # WINDOW = pygame.display.set_mode((1920, 1080), pygame.RESIZABLE) # STILL IN TESTING
 WINDOW = pygame.display.set_mode((500, 450))
 
+PREVIOUS_SIZE = 0
+PREVIOUS_INDEX = 0
 
 running = 1
 
@@ -27,6 +29,7 @@ X_HOVER_IMAGE = pygame.image.load("x_dim.png")
 X_HOVER_IMAGE = pygame.transform.scale(X_HOVER_IMAGE, (40, 40))
 
 paint = True
+paint_still = False
 
 pygame.display.set_caption("PyPaint  v1.0")
 
@@ -68,8 +71,30 @@ while running:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_EQUALS:
+
+
                 paint_mode += 2
                 print(paint_mode)
+
+            elif event.key == pygame.K_MINUS:
+                # print(paint_color)
+                if not index >= paint_mode:
+                    #print("Index is not less than paint mode")
+                    print(index)
+                    if index >= 0:
+                        print(index)
+                        # PREVIOUS_INDEX = index
+                        # PREVIOUS_SIZE = paint_mode
+                        if index == 0:
+                            paint_mode = 2
+
+                        else:
+                            paint_mode = paint_mode-1
+                            index = index-1
+
+
+
+
 
             elif event.key == pygame.K_ESCAPE:
                 pygame.quit()
@@ -139,6 +164,12 @@ while running:
 
                 print(paint_color)
                 paint = True
+            else:
+                if not paint_still:
+                    # IF MOUSE NOT MOVING BUT STILL ON CANVAS INCREASE SIZE SO IS VISIBLE
+                    draw_trail(paint_color)
+                    paint_still = True
+                    pygame.display.update()
 
         elif event.type == pygame.MOUSEMOTION:
 
@@ -190,6 +221,7 @@ while running:
                 if pygame.mouse.get_pressed()[0]:
                     pi = math.pi
                     x, y = pygame.mouse.get_pos()
+                    # PREVIOUS_INDEX, PREVIOUS_SIZE = index, paint_mode
 
                     pygame.draw.circle(WINDOW, paint_color, (x, y), paint_mode, index)
 
